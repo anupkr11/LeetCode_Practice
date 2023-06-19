@@ -1,0 +1,47 @@
+class Solution {
+    public void nextPermutation(int[] nums) {
+        int n = nums.length;
+        int index = -1;
+        //finding the breakpoint
+        for(int i=n-2; i>=0; i--){
+            if(nums[i]<nums[i+1]){
+                index = i;
+                break;
+            }
+        }
+        // if no breakpoint found then reverse the whole array
+        if(index == -1){
+             int x=index+1;
+        int y=n-1;
+        while(x<=y){
+            int temp = nums[x];
+            nums[x] = nums[y];
+            nums[y] = temp;
+            x++;
+            y--;
+        }
+            return;
+        }
+        //finding the number which is just greater than the index number and swap both
+        for(int i = n-1; i>=index; i--){
+            if (nums[i] > nums[index]) {
+                int temp = nums[i];
+                nums[i] = nums[index];
+                nums[index] = temp;
+                break;
+            }
+        }
+        // System.out.println(Arrays.toString(nums));
+        // reverse the remaining array
+        int x=index+1;
+        int y=n-1;
+        while(x<=y){
+            int temp = nums[x];
+            nums[x] = nums[y];
+            nums[y] = temp;
+            x++;
+            y--;
+        }
+        
+    }
+}
