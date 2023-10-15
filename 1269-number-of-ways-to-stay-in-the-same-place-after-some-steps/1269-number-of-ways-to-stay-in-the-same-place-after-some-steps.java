@@ -1,7 +1,7 @@
 class Solution {
     public int numWays(int steps, int arrLen) {
         int m = steps;
-        int n = Math.min(steps / 1 + 1, arrLen);
+        int n = Math.min(steps / 2 + 1, arrLen);
         
         int[][] dp = new int[m + 1][n];
         dp[0][0] = 1;
