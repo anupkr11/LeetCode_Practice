@@ -12,4 +12,5 @@ class Solution {
         }
         return (List)Arrays.asList(pascal);
     }
+
 }
