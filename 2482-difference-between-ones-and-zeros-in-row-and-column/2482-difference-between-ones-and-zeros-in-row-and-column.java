@@ -22,6 +22,6 @@ class Solution {
             }
         }
 
-        return grid; 
+        return grid;
     }
 }
