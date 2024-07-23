@@ -1,16 +1,25 @@
 class Solution {
     public int[] frequencySort(int[] nums) {
-        Map<Integer, Integer> map = new HashMap<>();
-        List<Integer> ans = new ArrayList<>();
-        for (int n : nums) {                            
-            ans.add(n);
-            map.put(n, map.getOrDefault(n, 0) + 1);
+        Map<Integer, Integer> freq = new HashMap<>();
+        for (int num : nums) {
+            freq.put(num, freq.getOrDefault(num, 0) + 1);
         }
 
-        Collections.sort(ans, (a, b) ->                 
-            (map.get(a) == map.get(b))? b - a : map.get(a) - map.get(b)
-        );
+        Integer[] numsObj = new Integer[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            numsObj[i] = nums[i];
+        }
 
-        return ans.stream().mapToInt(i -> i).toArray(); // O(n)
+        Arrays.sort(numsObj, (a, b) -> {
+            if (freq.get(a).equals(freq.get(b))) {
+                return Integer.compare(b, a);
+            }
+            return Integer.compare(freq.get(a), freq.get(b));
+        });
+        for (int i = 0; i < nums.length; i++) {
+            nums[i] = numsObj[i];
+        }
+
+        return nums;
     }
 }
